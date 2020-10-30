@@ -1,0 +1,25 @@
+<h1 class= "text-center mt-4"> Article listing page </h1>
+
+<div class="container" >  
+<% @articles.each do |arc| %>
+  <div class="row justify-content-md-center">
+  <div class="col-8 mt-4">
+  <div class="card text-center shadow  mb-5 bg-white rounded">
+    <div class="card-header font-italic">
+      By Amr Fahim
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to  arc.title , article_path(arc) , class: "text-info" %> </h5>
+      <p class="card-text"> <%= truncate(arc.description , length: 100) %> </p>
+      <%= link_to 'View' , article_path(arc) , class: "btn btn-outline-primary" %>
+      <%= link_to 'Edit' , edit_article_path(arc) , class: "btn btn-outline-info"%>
+      <%= link_to 'Delete', article_path(arc) , method: :delete , class: "btn btn-outline-danger" , data: { confirm: "Are you sure? " } %> 
+    </div>
+    <div class="card-footer text-muted">
+      <small> Created <%= time_ago_in_words(arc.created_at )%> ago, Updated <%= time_ago_in_words(arc.updated_at) %> ago  </small>
+    </div>
+  </div>
+  </div>
+  </div>
+  <% end %>
+  </div>
