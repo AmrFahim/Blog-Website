@@ -1,0 +1,22 @@
+<h1 class= "text-center mt-4"> <%= @user.username %>'s profile </h1>
+<%= gravater_for @user , size: 200 %>
+
+<% if logged_in? %> 
+  <div class="text-center mt-4">
+  <% if @user == current_user  %>
+    <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-outline-primary "%>
+  <% end %>
+  <% if current_user.admin?  || @user == current_user  %>  
+    <%= link_to "Delete #{  current_user.admin? ? "this " : "your " }profile", user_path(@user), class: "btn btn-outline-danger " , method: :delete , data: {confirm: "Are you sure ?"} %>
+  <% end %>
+  </div>
+<% end %>  
+
+<h3 class= "text-center mt-4"> Articles </h3>
+<div class="flickr_pagination">
+  <%= will_paginate @articles , :container => false %>
+</div>
+<%= render 'articles/article'%>
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @articles , :container => false %>
+</div>
