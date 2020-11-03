@@ -1,0 +1,10 @@
+<h1 class= "text-center mt-4"> Update this category name : <%= @category.name %> </h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <%= render 'form'%>
+    </div>
+    <%= link_to '[ Cancel & return to category ]' , category_path(@category) , class: "text-dark" %>
+  </div>
+</div>

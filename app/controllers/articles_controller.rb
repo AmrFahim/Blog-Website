@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 1)
+    @articles = Article.paginate(page: params[:page], per_page: 5)
     
   end
 
@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids:[] )
   end
 
   def require_same_user
