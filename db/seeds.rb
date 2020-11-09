@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+i = 1;
+20.times {
+  username = "user"+(i.to_s)
+  email = username+"@example.com"
+  password = username+"password"
+  user = User.create(username: username, email: email, password: password)
+  Article.create(title: "this is a test title from #{username}",
+                  description: "This is a test description to test the functionality of the project", user: user)
+
+  i+=1
+}
